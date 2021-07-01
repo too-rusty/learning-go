@@ -10,11 +10,7 @@ import (
 func timeIt(f func() interface{}) (int64, interface{}) {
 	// time taken and the return value
 	now := time.Now()
-	v := f()
-	var ret interface{}
-	if val, ok := v.(*big.Int); ok {
-		ret = interface{}(val)
-	}
+	ret := f()
 	return time.Since(now).Milliseconds(), ret
 }
 
@@ -81,3 +77,19 @@ func main() {
 	}
 
 }
+
+/*
+
+let say we have some data struct
+
+convert from data to interface
+
+-------- interface{}(data) ------
+
+convert from interface to data
+
+-------- ok, val := i.(data) ----
+
+ok tells if the conversion was succesful
+
+*/
